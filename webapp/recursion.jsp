@@ -29,14 +29,14 @@
      */
     public int factorial(int value)
     {
-        /*
+       int n;
+	 /*
          * Here is the base case (ending condition): value == 1.
          * This lets our recursion know when to stop.
          */
         if(value == 1) {
-		return value;
+	return 1;
 	}
-
 
         /*
          * Here is the recursive statement. The function calls itself when the 
@@ -47,9 +47,8 @@
          * By doing this, we break up the equation n! into n! = n * (n-1)!.
          */
         else {
-		value = value * (value - 1);
+	 return  n  * factorial(value - 1);
 	}
-
     }
 
     /** **********************************************************************
@@ -70,7 +69,15 @@
      */
     public int fibonacci(int n)
     {
-        return 0;
+	if(n == 1) {
+	return 1;
+	}
+	else if(n == 2) {
+	return fibonacci(1);
+	}
+	else {
+	return n + fibonacci(n - 1);
+	}
     }
 
     
@@ -103,22 +110,23 @@
     
         public Tree(int value)
         {
-    	    return 0;
+	 this.value = value;
+	children = new ArrayList<Tree>();	
         }
     
         public int getValue()
         {
-    	    return 0;
+	    return value;
         }
     
         public ArrayList<Tree> getChildren()
         {
-    	    return null;
+	    return children;
         }
     
         public void add(Tree child)
         {
-    	    
+	    children.add(child);
         }
     }
     
@@ -150,12 +158,11 @@
      */
     public int nnaryTreeSize(int branchingFactor, int height)
     {
-        if (height == 1) 
-        {
-    	    return 0;
-        }
-        
-    	return 0;
+	if(height == 1) {
+	return 1;
+	}
+	else {
+	return branchingFactor * nnaryTreeSize(branchingFactor, height - 1);   
     }
 
     /** **********************************************************************
@@ -168,7 +175,11 @@
      */
     public int treeSum(Tree tree)
     {
-    	return 0;
+	int treeSum = 0;
+	for(Tree t : this.children) {
+	treeSum = treeSum + t.getValue();
+	}
+	return treeSum;
     }
     
     /** **********************************************************************
@@ -251,8 +262,8 @@
          */
         else 
         {
-        	return area + circledSquared(!square, length * Math.sqrt(2), depth - 1);
-    	}
+	return area + circledSquared(!square, length * Math.sqrt(2), depth - 1);
+	}
     }
 %>
 <center>
